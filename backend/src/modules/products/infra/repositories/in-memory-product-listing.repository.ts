@@ -2,9 +2,13 @@ import { ProductListingRepository } from "../../application/repositories/product
 import { ProductListing } from "../../domain/entities/product-listing.entity.js";
 
 export class InMemoryProductListingRepository implements ProductListingRepository{
-    public items: ProductListing[] = []
-
+    public items: ProductListing[]=[]
+    
     async create(productListing: ProductListing): Promise<void> {
         this.items.push(productListing)
+    }
+
+    findAll(): Promise<ProductListing[]> {
+        return this.findAll()
     }
 }

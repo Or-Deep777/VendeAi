@@ -1,20 +1,22 @@
-import { Body, Controller, Get, Post } from "@nestjs/common";
-import { CreateProductListingUseCase } from "../../application/create-product-listing.use-case.js";
-import { FindAllProductListingUseCase } from "../../application/find-all-product-listing.use-case.js";
+import { Body, Controller, Post, Get } from "@nestjs/common";
+import { CreateProductListingUseCase } from "../../application/use-cases/create-product-listing.use-case.js";
+import { FindAllProductListingUseCase } from "../../application/use-cases/find-all-product-listing.use-case.js";
+import { CreateProductListingDto } from "../dtos/create-product-listing.dto.js";
 
 @Controller("products")
 export class ProductListingController{
     constructor(
         private readonly createProductListingUseCase: CreateProductListingUseCase,
-        private readonly findAllProductListingCase: FindAllProductListingUseCase
+        private readonly findAllProductListingUseCase: FindAllProductListingUseCase
     ){}
+
     @Post()
-    create(@Body()body:any){
-        return this.createProductListingUseCase.execute(body)
+    create(@Body()data:CreateProductListingDto){
+        return this.createProductListingUseCase.execute(data)
     }
 
     @Get()
     async findAll(){
-        return this.findAllProductListingCase.execute()
+        return this.findAllProductListingUseCase.execute()
     }
 }

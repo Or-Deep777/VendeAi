@@ -1,5 +1,6 @@
 import { ProductListing } from "../../domain/entities/product-listing.entity.js";
 
-export interface ProductListingRepository{
-    create(ProductListing:ProductListing):void
+export abstract class ProductListingRepository{
+    abstract create(ProductListing:ProductListing): Promise<void>
+    abstract findAll(): Promise<ProductListing[]>
 }

@@ -1,20 +1,20 @@
+import { title } from "process"
 import { ProductListingRepository } from "../src/modules/products/application/repositories/product-listing.repository.js"
+import { FindAllProductListingUseCase } from "../src/modules/products/application/use-cases/find-all-product-listing.use-case.js"
 
 describe("Find all product listing",()=>{
     it("deve retornar todos os produtos",async()=>{
         const productListingRepository = {
-            findAll: async () => [
-                {
-                    id:"1",
-                    title:"iphone 13",
-                    description:"Iphone usado",
-                    priceInCents:250000,
-                    sellerId:"seller-1",
-                    categoryId:"category-1",
-                    status:"AVAILABLE"
-                }
-            ]
-        } as ProductListingRepository
+            findAll:async()=>[{
+                id:"1",
+                title:"iphone 13",
+                description:"Iphone usado",
+                priceInCents:250000,
+                sellerId:"seller-1",
+                categoryId:"category-1",
+                status:"AVAILABLE"
+            }]
+        } as unknown as ProductListingRepository
         const sut = new FindAllProductListingUseCase(
             productListingRepository
         )
