@@ -57,11 +57,9 @@ jobs:
           grep -A2 '"node_modules/typescript"' package-lock.json
 
       - name: Install backend dependencies
-        working-directory: backend
         run: npm ci
 
       - name: Run backend tests with coverage
-        working-directory: backend
         run: npm run build
 
       - name: SonarQube Cloud
