@@ -51,10 +51,10 @@ jobs:
       - name: Check backend files
         run: |
           echo "PACKAGE.JSON"
-          grep '"typescript"' backend/package.json
+          grep '"typescript"' package.json
 
           echo "LOCKFILE"
-          grep -A2 '"node_modules/typescript"' backend/package-lock.json
+          grep -A2 '"node_modules/typescript"' package-lock.json
 
       - name: Install backend dependencies
         working-directory: backend
